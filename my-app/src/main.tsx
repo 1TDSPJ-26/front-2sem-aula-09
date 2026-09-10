@@ -6,7 +6,7 @@ import Home from './routes/Home'
 import Produtos from './routes/Produtos'
 import EditarProdutos from './routes/EditarProdutos'
 import Error from './routes/Error'
-import { createBrowserRouter } from 'react-router'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 
 const router = createBrowserRouter([
   {
@@ -19,11 +19,11 @@ const router = createBrowserRouter([
       { path: '/editar-produtos', element: <EditarProdutos /> }
     ]
   }
-])
+]);
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
