@@ -1,21 +1,51 @@
+import { useEffect, useState } from "react"
+import { useParams } from "react-router"
+
+//criando um tipo ou interface de dados que o companente vai receber
+/*interface Produto{
+    id: number;
+    nome: string;
+    preco: number
+}*/
+
+type TipoProduto = {
+    id: number;
+    nome: string;
+    preco: number
+}
+
+
+const listaProdutos: TipoProduto[] = [
+    { id: 1, nome: "Produto 1", preco: 10.0 },
+    { id: 2, nome: "Produto 2", preco: 20.0 },
+    { id: 3, nome: "Produto 3", preco: 30.0 },
+]
+
 export default function EditarProduto() {
+
+    const {id} = useParams<string>()
+
+    const[produto, setProduto] = useState<TipoProduto>({} as TipoProduto);
+
+    const[clicando, setClicando] = useState<number>(0);
+
+    useEffect(() => {
+        const prodEncontrado = listaProdutos.find((i) => i.id === Number(id));
+        setProduto(prodEncontrado!);
+    },[])
+
     return (
         <main>
             <section>
-                <h2>Produtos</h2>
-                <figure>
-                    <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Imagem ilustrativa do conteúdo"/>
-                    <figcaption>Imagem ilustrativa do conteúdo</figcaption>
-                </figure>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nostrum voluptate est error optio porro, repellat labore reprehenderit vitae vero voluptas delectus deserunt nisi ipsam expedita hic laborum eaque alias minima sunt aspernatur officiis nemo in. Corporis corrupti porro veniam?</p>
-            </section>
-            <section>
-                <h2>Betiger</h2>
-                <figure>
-                    <img src="/Gira-Gira.jpg" width="600" height="400" alt="Imagem ilustrativa de Betiger"/>
-                    <figcaption>Pessoal do Betiger</figcaption>
-                </figure>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nostrum voluptate est error optio porro, repellat labore reprehenderit vitae vero voluptas delectus deserunt nisi ipsam expedita hic laborum eaque alias minima sunt aspernatur officiis nemo in. Corporis corrupti porro veniam?</p>
+                <h2>Editar produtos</h2>
+                <p>ID: {id}</p>
+                {produto ?(<div>
+                    <p>Nome do produto: {produto.nome}</p>
+                    <p>Preço do produto: {produto.preco}</p>
+                </div>) :
+                (<div>
+                    <p>Produto não encontrado</p>
+                </div>)}
             </section>
         </main>
     )
