@@ -1,17 +1,15 @@
+
 export default function Cabecalho() {
   return (
     <header>
-      <h1>Minha Aplicação React</h1>
-
-      <div>
-        <p>
-          <a href="#">Início</a>
-        </p>
-
-        <p>
-          <a href="#">Conteúdo</a>
-        </p>
-      </div>
+        <h1>Meu site</h1>
+        <nav>
+            <ul>
+                <li>Item-1</li>
+                <li>Item-2</li>
+                <li>Item-3</li>
+            </ul>
+        </nav>
     </header>
   )
 }
