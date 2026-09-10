@@ -1,9 +1,13 @@
+import Cabecalho from "./components/Cabecalho";
+import Rodape from "./components/Rodape";
 import { Outlet } from "react-router";
 
 export default function App() {
   return (
-    <main>
-      <Outlet />
-    </main>
+    <div>
+      <Cabecalho/>
+      <Outlet/>
+      <Rodape/>
+    </div>
   )
 }
