@@ -1,37 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router"
+
+type TipoProduto = {
+  id: number;
+  nome: string;
+  preco: number
+}
+
+const listaProdutos:TipoProduto[] = [
+    { id: 1, nome: "Produto 1", preco: 10.0 },
+    { id: 2, nome: "Produto 2", preco: 20.0 },
+    { id: 3, nome: "Produto 3", preco: 30.0 },
+    { id: 10, nome: "Produto 10", preco: 50.0 },
+];
+
+
 
 export default function EditarProdutos() {
-  let nomeComum: string | null = "flavio";
-  function alterNomeComum() {
-    nomeComum = prompt("digite o novo nome!");
-    console.log("nome alterado : ", nomeComum)
-  }
-
-  const [nomeState, setNomeState] = useState<string | null>("juquinha");
-  function alterNomeState() {
-    const nome: string | null = prompt("digite o novo nome")
-    setNomeState( (valorAnterior)=> valorAnterior = nome);
-    console.log("Nome alterado : ", nomeState);
-  }
+  const { id } = useParams<string>();
 
 
+  const [produto, setProduto] = useState<TipoProduto>({} as TipoProduto);
+
+  useEffect( () => {
+     const prodEncontrado = listaProdutos.find( (p)=> p.id === Number(id) );
+
+    setProduto(prodEncontrado!);
+  }, [])
 
 
-
-
+ 
   return (
     <header>
         <h2>EditarProdutos</h2>
-
-      <div>
-        <p>Nome Comum : {nomeComum}</p>
-        <button onClick={alterNomeComum}>Nome Alterado = {nomeComum}</button>
-      </div>
-
-      <div>
-        <p>Nome State : {nomeState}</p>
-        <button onClick={alterNomeState}>Nome alterado State = {nomeState}</button>
-      </div>
+        {produto ?(
+          <div>
+            <p>Nome  do produto: {produto.nome}</p>
+            <p>Preço do produto: {produto.preco}</p>
+          </div>) :
+          (<p>Produto não encontrado</p>)
+          }
     </header>
   )
 }
