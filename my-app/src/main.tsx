@@ -9,9 +9,7 @@ import Error from './routes/Error'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
-    errorElement: <Error />,
+    path: '/', element: <App />, errorElement: <Error />,
     children: [
       { path: '/', element: <Home /> },
       { path: '/produtos', element: <Produtos /> },
