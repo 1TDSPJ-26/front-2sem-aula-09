@@ -1,7 +1,9 @@
-export default function EditarProdutos(){
+export default function EditarProdutos() {
     return (
         <div>
-            <h1>EditarProdutos</h1>
+            <h2>Editar Produtos</h2>    
         </div>
-    ) 
+    )
 }
+
+
