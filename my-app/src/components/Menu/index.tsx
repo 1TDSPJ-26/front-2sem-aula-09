@@ -15,6 +15,7 @@ export default function Menu() {
                     <Link className="hover:text-white" to="/produtos">Produtos</Link>
                     <Link className="hover:text-white" to="/conteudo">Conteudo</Link>
                     <Link className="hover:text-white" to="/lampada">Lampada</Link>
+                    
                 </div>
             </nav>
         </header>
