@@ -1,9 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from './App'
+import Home from './routes/Home'
+import Produtos from './routes/Produtos'
+import EditarProdutos from './routes/EditarProdutos'
+import Error from './routes/Error'
