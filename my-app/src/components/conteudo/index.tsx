@@ -11,7 +11,7 @@ export default function Conteudo() {
     const[nomeState, setNomeState] = useState<string | null>("Gysta");
     function alterarNomeState() {
         const nome:string | null = prompt("Digite o novo nome state:");
-        setNomeState((valorAnterior) => valorAnterior = nome);
+        setNomeState(nome);
         console.log(nomeState);
     }
 
