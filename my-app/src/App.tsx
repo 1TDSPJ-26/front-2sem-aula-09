@@ -8,7 +8,7 @@ function App() {
         <div className="min-h-screen bg-slate-950 text-slate-100">
             <Cabecalho />
             <main className="mx-auto min-h-[76vh] max-w-5xl px-4 sm:px-6">
-                <Lampada />
+                <Outlet />
             </main>
             <Rodape />
         </div>
